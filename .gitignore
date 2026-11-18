@@ -60,3 +60,9 @@ patch_main.py
 .idea/
 .DS_Store
 Thumbs.db
+
+# Datos locales del usuario (se crean al usar JARVIS)
+config/user_profile.json
+config/morning_brief_state.json
+config/vision_guardian_state.json
+memory/long_term.json
