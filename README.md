@@ -1,38 +1,57 @@
-# JARVIS AI -
+# JARVIS
 
-Un poderoso asistente virtual avanzado para escritorio inspirado en la IA de Marvel. Este proyecto cuenta con integración profunda en Windows, automatización cognitiva, control de entorno y una interfaz *Glassmorphism* holográfica interactiva.
+**Asistente virtual de escritorio para Windows con inteligencia artificial.** JARVIS se controla por voz o por texto, entiende el contexto de lo que haces en el computador y automatiza tareas del sistema, la web, los archivos y las comunicaciones desde una sola interfaz.
 
-## 🌟 Características Principales
+> **Versión beta.** El proyecto está en desarrollo activo y puede tener cambios importantes entre versiones.
 
-* **Interfaz Holográfica:** Orbe reactivo y esquema de color inspirado en JARVIS (Era de Ultrón) con tema dorado y animaciones de procesamiento dinámicas.
-* **Comandos de Voz y Atajos Inteligentes:** Puedes llamarlo en cualquier momento, incluso si la ventana está minimizada, usando la tecla global `Insert` para activar el micrófono inmediatamente de manera nativa.
-* **Control Contextual del Entorno:** Control autónomo del volumen, brillo, energía y *Focus Assist* basado en tus hábitos y la ventana activa en pantalla.
-* **Programación Autónoma en Sandbox:** JARVIS puede escribirse sus propios scripts de habilidades (`auto_programmer`), compilarlos en frío y ejecutarlos con un timeout seguro en un entorno de pruebas, para inyectar su propio código en tiempo real si tiene éxito.
-* **Navegación Web (YouTube):** Capacidad nativa de buscar música y videos invisibles y reproducirlos automáticamente a través del navegador web.
-* **Organizador y Gestor de Archivos:** Abre, visualiza y edita documentos, sumado al análisis de archivos con clasificación inteligente y eliminación de duplicados exactos usando sumas `MD5`.
-* **Comunicaciones Unificadas:** Envía información centralizada usando correos, Telegram, Discord, y WhatsApp desde una sola interfaz base.
+## Funciones
 
-## 🛠️ Tecnologías
+| Área | Qué hace |
+|---|---|
+| **Voz** | Activación en cualquier momento con la tecla global `Insert`, incluso con la ventana minimizada. Reconocimiento de voz local con Vosk y respuesta hablada. |
+| **Interfaz** | Interfaz holográfica con orbe reactivo, tema dorado y animaciones mientras procesa. |
+| **Control del sistema** | Volumen, brillo, energía y *Focus Assist* según tus hábitos y la ventana activa. |
+| **Automatización** | Puede escribir sus propias habilidades (`auto_programmer`), probarlas en un entorno aislado con tiempo límite e incorporarlas si funcionan. |
+| **Web y multimedia** | Búsqueda en la web, reproducción de música y videos en YouTube y control de Spotify. |
+| **Archivos y documentos** | Abre, crea y edita documentos; clasifica archivos y elimina duplicados exactos mediante MD5. |
+| **Comunicaciones** | Envío de mensajes por correo, Telegram, Discord y WhatsApp desde la misma interfaz. |
+| **Modelos de IA** | Integración con Gemini y OpenRouter. |
 
-* **Python 3.12**
-* **PyQt6** (Para la interfaz holográfica dinámica y el QWebEngineView)
-* **LLMs** (Soporte integrado para Gemini y OpenRouter)
-* Integraciones de SO: `pycaw`, `pygetwindow`, `psutil`, `WMI`, `winreg` y llamadas directas al Win32 Kernel (`ctypes`) para el atajo global inteligente.
+## Requisitos
 
-## 🚀 Instalación y Uso
+- Windows 10 u 11.
+- [Python 3.12](https://www.python.org/downloads/), con la opción "Add Python to PATH" marcada.
+- Llaves de API de los servicios que quieras usar (Gemini u OpenRouter como mínimo).
 
-1. Instala [Python 3.12](https://www.python.org/downloads/) asegurándote de marcar "Add Python to PATH".
-2. Clona este repositorio en tu escritorio:
+## Instalación
+
+1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/JARVIS-AI.git
+   git clone https://github.com/michaelchavarronope/JARVIS.git
    ```
-3. Ejecuta el archivo `Instalar_JARVIS.bat` para construir el entorno virtual (`.venv`) e instalar automáticamente todas las dependencias (`requirements.txt`).
-4. Para iniciarlo rápidamente (y en segundo plano), puedes utilizar **`Iniciar JARVIS Beta.vbs`**.
+2. Ejecuta `Instalar_JARVIS.bat`. Crea el entorno virtual (`.venv`), instala las dependencias de `requirements.txt` y genera la configuración inicial.
+3. Copia `config/api_keys.example.json` como `config/api_keys.json` (si el instalador no lo hizo) y escribe tus llaves de API.
+4. Inicia JARVIS con `Iniciar JARVIS Beta.vbs`, que lo abre en segundo plano.
 
-## 🛡️ Notas de Seguridad
-Este proyecto usa tu configuración local en `config/api_keys.json` para gestionar llaves maestras de API. Este archivo **no debe subirse** a GitHub bajo ningún concepto, por lo cual ya viene protegido automáticamente por el `.gitignore` nativo de esta rama.
+Algunos módulos se distribuyen compilados (`.pyc`) para Python 3.12, por lo que esa versión de Python es obligatoria.
 
----
-*Desarrollado y mantenido con IA & 2PAC.*
+## Tecnologías
 
+| Componente | Tecnología |
+|---|---|
+| Lenguaje | Python 3.12 |
+| Interfaz | PyQt6 y Qt WebEngine |
+| IA | Gemini (`google-genai`) y OpenRouter |
+| Voz | Vosk (reconocimiento local), gTTS y Edge TTS |
+| Integración con Windows | `pycaw`, `pygetwindow`, `pywinauto`, `psutil`, `ctypes` (Win32) |
+| Automatización web | Playwright |
 
+## Seguridad y privacidad
+
+- Las llaves de API se guardan solo en tu equipo, en `config/api_keys.json`. Ese archivo está excluido del repositorio por `.gitignore` y no debe compartirse.
+- El perfil de usuario y la memoria del asistente (`config/user_profile.json`, `memory/long_term.json`) se crean y guardan localmente; tampoco se suben al repositorio.
+- JARVIS puede controlar el sistema, ejecutar comandos y enviar mensajes en tu nombre: revisa los permisos que le das y úsalo en un equipo de confianza.
+
+## Licencia
+
+Este proyecto no tiene licencia de código abierto: todos los derechos reservados por su autor.
